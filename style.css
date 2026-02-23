@@ -1,86 +1,53 @@
-/* WESTSCHNELLWEG — Single Wall Layout */
+/* WESTSCHNELLWEG — wall only */
 
-* {
-  box-sizing: border-box;
+* { box-sizing: border-box; }
+
+:root{
+  --bg: #efe6d6;
+  --ink: #243140;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
-:root {
-  --bg: #111213;
-  --text: #f1f1ee;
-  --title: rgba(241,241,238,0.75);
-
-  --max-width: 82ch;
-  --body-size: 18px;
-  --line-height: 1.65;
-}
-
-/* ---- Page ---- */
-
-body {
+body{
   background: var(--bg);
-  color: var(--text);
-  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ---- Container ---- */
-
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: clamp(30px, 6vw, 80px) 24px;
+/* Keep main as a simple container */
+main{
+  max-width: 92ch;                  /* change to 100% if you want truly full width */
+  margin: clamp(24px, 5vw, 72px) auto;
+  padding: 0 clamp(16px, 4vw, 32px);
 }
 
-/* ---- Title ---- */
-
-h1 {
-  margin: 0 0 40px 0;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--title);
-}
-
-/* ---- The Wall ---- */
-
-.wall {
-  font-size: var(--body-size);
-  line-height: var(--line-height);
+/* THE WALL */
+.wall{
+  font-size: 18px;
+  line-height: 1.75;
   letter-spacing: 0.01em;
 
-  margin: 0;
-  white-space: normal;
+  /* the three “make it wrap no matter what” lines */
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  /* also kill hyphenation to keep it clean */
   hyphens: none;
-  overflow-wrap: break-word;
-  word-break: normal;
-}
 
-/* Neutralize accidental spacing */
-.wall p {
   margin: 0;
 }
 
-/* If stray <br> exist */
-.wall br {
-  display: none;
-}
+/* If you accidentally have paragraphs, don’t let them create gaps */
+.wall p{ margin: 0; }
 
-/* ---- Mobile ---- */
+/* If stray <br> tags exist, neutralize them */
+.wall br{ display: none; }
 
-@media (max-width: 520px) {
-  :root {
-    --body-size: 17px;
-    --max-width: 70ch;
-  }
-
-  main {
-    padding: 30px 18px;
-  }
+@media (max-width: 520px){
+  .wall{ font-size: 17px; }
+  main{ max-width: 72ch; }
 }
