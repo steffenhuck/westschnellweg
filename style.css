@@ -1,9 +1,9 @@
-/* WESTSCHNELLWEG — Stark Wall (tempered) */
+/* WESTSCHNELLWEG — Dossier Wall (IBM Plex Mono) */
 
 :root{
-  --bg: #0a0b0f;         /* deep charcoal (less OLED-black) */
-  --ink: #e6e6e2;        /* slightly softened off-white */
-  --rule: rgba(230,230,226,.10);
+  --bg: #0b0c10;
+  --ink: #e4e4e0;
+  --rule: rgba(228,228,224,.10);
 }
 
 *{ box-sizing: border-box; }
@@ -16,58 +16,55 @@ html, body{
 body{
   background: var(--bg);
   color: var(--ink);
-  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: "IBM Plex Mono", monospace;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* architectural slab but not edge-kissing */
+/* narrow side breathing, still wall-like */
 main{
-  max-width: 1600px;
-  margin: 40px auto;                 /* slightly less vertical drama */
-  padding: 0 clamp(18px, 4vw, 48px); /* micro-breathing */
+  max-width: 1750px;
+  margin: 32px auto;
+  padding: 0 10px;
 }
 
 /* the wall */
 .wall{
-  font-size: 16.2px;      /* slightly larger than brutal version */
-  line-height: 1.38;      /* slightly looser */
-  letter-spacing: 0.002em;
-  word-spacing: 0.008em;
+  font-size: 15.2px;      /* mono must be slightly smaller */
+  line-height: 1.36;
+  letter-spacing: 0;      /* mono doesn’t want extra tracking */
+  word-spacing: 0;
 
   text-align: justify;
   text-justify: inter-word;
 
   hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
 
   white-space: normal;
   overflow-wrap: break-word;
 
   margin: 0;
-  padding-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--rule);
 }
 
-/* ensure wall remains one block */
+/* keep it one block */
 .wall p{ margin: 0; }
 .wall br{ display: none; }
 
-/* soften selection slightly */
+/* selection */
 ::selection{
-  background: rgba(230,230,226,.14);
+  background: rgba(228,228,224,.15);
 }
 
-/* mobile: preserve mood without ugliness */
-@media (max-width: 680px){
+/* mobile — mono justified looks bad on small screens */
+@media (max-width: 700px){
   main{
-    margin: 30px auto;
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .wall{
-    font-size: 15.6px;
+    font-size: 14.8px;
     line-height: 1.45;
     text-align: left;
     hyphens: none;
