@@ -1,49 +1,40 @@
-:root {
-  --bg: #efe6d6;
-  --ink: #243140;
-}
+/* DIAG-WSW-2026-02-23 */
+:root { --bg: #00ffcc; --ink: #111; }
 
 * { box-sizing: border-box; }
-
 html, body { margin: 0; padding: 0; }
 
-body{
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+body {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
 }
 
-main{
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 30px;
+/* Force a narrow column so wrapping is unavoidable */
+main {
+  max-width: 320px !important;
+  margin: 20px auto !important;
+  padding: 10px !important;
+  border: 6px solid #ff00ff !important;
 }
 
-/* HARD OVERRIDES: kill any inherited/inline nowrap */
-.wall, .wall *{
+/* Make the wall visually obvious */
+.wall {
+  display: block !important;
+  border: 4px dashed #0000ff !important;
+  padding: 12px !important;
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+
   white-space: normal !important;
-}
-
-/* FORCE WRAPPING EVEN IF TEXT IS “UNBREAKABLE” */
-.wall{
-  display: block;
-  max-width: 100%;
-
-  font-size: 18px;
-  line-height: 1.75;
-  letter-spacing: 0.01em;
-
   overflow-wrap: anywhere !important;
-  word-break: break-all !important; /* this is the sledgehammer */
-  hyphens: none;
-
-  margin: 0;
+  word-break: break-all !important;
 }
 
-/* Mobile */
-@media (max-width: 600px){
-  main{ margin: 40px auto; padding: 0 18px; }
-  .wall{ font-size: 17px; }
+/* Add an unmistakable marker */
+.wall::before{
+  content: "CSS LOADED ✅ — if you see this, we are editing the right page." !important;
+  display: block !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
 }
