@@ -1,9 +1,8 @@
-/* WESTSCHNELLWEG — Dossier Wall (IBM Plex Mono) */
+/* WESTSCHNELLWEG — Chemical Field */
 
 :root{
-  --bg: #0b0c10;
-  --ink: #e4e4e0;
-  --rule: rgba(228,228,224,.10);
+  --bg: #B8FF00;     /* toxic acid */
+  --ink: #000000;    /* black */
 }
 
 *{ box-sizing: border-box; }
@@ -16,56 +15,36 @@ html, body{
 body{
   background: var(--bg);
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* narrow side breathing, still wall-like */
+/* wall but controlled */
 main{
-  max-width: 1750px;
-  margin: 32px auto;
-  padding: 0 10px;
+  margin: 0;
+  padding: 0 12px;
+  max-width: none;
 }
 
-/* the wall */
 .wall{
-  font-size: 15.2px;      /* mono must be slightly smaller */
-  line-height: 1.36;
-  letter-spacing: 0;      /* mono doesn’t want extra tracking */
+  font-size: 15.6px;
+  line-height: 1.38;
+  letter-spacing: -0.005em;  /* slight compression = harder surface */
   word-spacing: 0;
 
   text-align: justify;
-  text-justify: inter-word;
-
   hyphens: auto;
 
-  white-space: normal;
-  overflow-wrap: break-word;
-
   margin: 0;
-  padding-top: 12px;
-  border-top: 1px solid var(--rule);
+  padding: 0;
 }
 
-/* keep it one block */
 .wall p{ margin: 0; }
 .wall br{ display: none; }
 
-/* selection */
-::selection{
-  background: rgba(228,228,224,.15);
-}
-
-/* mobile — mono justified looks bad on small screens */
 @media (max-width: 700px){
-  main{
-    padding: 0 14px;
-  }
-
   .wall{
-    font-size: 14.8px;
-    line-height: 1.45;
     text-align: left;
     hyphens: none;
   }
