@@ -1,8 +1,9 @@
-/* WESTSCHNELLWEG — Full-bleed wall (stark, justified) */
+/* WESTSCHNELLWEG — Stark Wall (tempered) */
 
 :root{
-  --bg: #06070a;   /* stark near-black */
-  --ink: #f2f2ef;  /* hard off-white */
+  --bg: #0a0b0f;         /* deep charcoal (less OLED-black) */
+  --ink: #e6e6e2;        /* slightly softened off-white */
+  --rule: rgba(230,230,226,.10);
 }
 
 *{ box-sizing: border-box; }
@@ -10,8 +11,6 @@
 html, body{
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
 }
 
 body{
@@ -22,23 +21,21 @@ body{
   text-rendering: optimizeLegibility;
 }
 
-/* FULL BLEED: no container padding/margins */
+/* architectural slab but not edge-kissing */
 main{
-  margin: 0;
-  padding: 0;
-  max-width: none;
+  max-width: 1600px;
+  margin: 40px auto;                 /* slightly less vertical drama */
+  padding: 0 clamp(18px, 4vw, 48px); /* micro-breathing */
 }
 
-/* THE WALL */
+/* the wall */
 .wall{
-  margin: 0;
-  padding: 0;
-
-  font-size: 15.8px;
-  line-height: 1.32;         /* tighter, less “friendly” */
+  font-size: 16.2px;      /* slightly larger than brutal version */
+  line-height: 1.38;      /* slightly looser */
   letter-spacing: 0.002em;
+  word-spacing: 0.008em;
 
-  text-align: justify;       /* hard right edge */
+  text-align: justify;
   text-justify: inter-word;
 
   hyphens: auto;
@@ -47,17 +44,31 @@ main{
 
   white-space: normal;
   overflow-wrap: break-word;
+
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
 }
 
-/* If paste introduced tags, keep it one block */
+/* ensure wall remains one block */
 .wall p{ margin: 0; }
 .wall br{ display: none; }
 
-/* Mobile: justified full-bleed looks awful on phones; keep it readable */
+/* soften selection slightly */
+::selection{
+  background: rgba(230,230,226,.14);
+}
+
+/* mobile: preserve mood without ugliness */
 @media (max-width: 680px){
+  main{
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
   .wall{
-    font-size: 15.4px;
-    line-height: 1.42;
+    font-size: 15.6px;
+    line-height: 1.45;
     text-align: left;
     hyphens: none;
   }
