@@ -1,0 +1,86 @@
+/* WESTSCHNELLWEG — Single Wall Layout */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #111213;
+  --text: #f1f1ee;
+  --title: rgba(241,241,238,0.75);
+
+  --max-width: 82ch;
+  --body-size: 18px;
+  --line-height: 1.65;
+}
+
+/* ---- Page ---- */
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Georgia", "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Container ---- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(30px, 6vw, 80px) 24px;
+}
+
+/* ---- Title ---- */
+
+h1 {
+  margin: 0 0 40px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--title);
+}
+
+/* ---- The Wall ---- */
+
+.wall {
+  font-size: var(--body-size);
+  line-height: var(--line-height);
+  letter-spacing: 0.01em;
+
+  margin: 0;
+  white-space: normal;
+  hyphens: none;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Neutralize accidental spacing */
+.wall p {
+  margin: 0;
+}
+
+/* If stray <br> exist */
+.wall br {
+  display: none;
+}
+
+/* ---- Mobile ---- */
+
+@media (max-width: 520px) {
+  :root {
+    --body-size: 17px;
+    --max-width: 70ch;
+  }
+
+  main {
+    padding: 30px 18px;
+  }
+}
