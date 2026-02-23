@@ -3,16 +3,11 @@
   --ink: #243140;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
-body {
+body{
   background: var(--bg);
   color: var(--ink);
   font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -20,37 +15,35 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-main {
-  max-width: 1200px;          /* increase if you want more “wall” */
+main{
+  max-width: 1200px;
   margin: 60px auto;
   padding: 0 30px;
 }
 
-/* THE WALL */
+/* HARD OVERRIDES: kill any inherited/inline nowrap */
+.wall, .wall *{
+  white-space: normal !important;
+}
 
-.wall {
+/* FORCE WRAPPING EVEN IF TEXT IS “UNBREAKABLE” */
+.wall{
+  display: block;
+  max-width: 100%;
+
   font-size: 18px;
   line-height: 1.75;
   letter-spacing: 0.01em;
 
-  white-space: normal;        /* allow wrapping */
-  overflow-wrap: anywhere;    /* force wrap if needed */
-  word-break: break-word;
-
+  overflow-wrap: anywhere !important;
+  word-break: break-all !important; /* this is the sledgehammer */
   hyphens: none;
+
   margin: 0;
 }
 
-/* Mobile refinement */
-
-@media (max-width: 600px) {
-  main {
-    max-width: 92%;
-    margin: 40px auto;
-    padding: 0 18px;
-  }
-
-  .wall {
-    font-size: 17px;
-  }
+/* Mobile */
+@media (max-width: 600px){
+  main{ margin: 40px auto; padding: 0 18px; }
+  .wall{ font-size: 17px; }
 }
