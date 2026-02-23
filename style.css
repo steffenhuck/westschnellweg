@@ -1,9 +1,8 @@
-/* WESTSCHNELLWEG — Stark Wall (high contrast, disconcerting, hard right edge) */
+/* WESTSCHNELLWEG — Full-bleed wall (stark, justified) */
 
 :root{
-  --bg: #07080b;                 /* almost-black */
-  --ink: #e9e9e6;                /* off-white (high contrast, less “clean” than pure white) */
-  --rule: rgba(233,233,230,.12); /* subtle mounting line */
+  --bg: #06070a;   /* stark near-black */
+  --ink: #f2f2ef;  /* hard off-white */
 }
 
 *{ box-sizing: border-box; }
@@ -11,6 +10,8 @@
 html, body{
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 body{
@@ -21,21 +22,23 @@ body{
   text-rendering: optimizeLegibility;
 }
 
-/* wide, architectural slab */
+/* FULL BLEED: no container padding/margins */
 main{
-  max-width: 1680px;
-  margin: 48px auto;
-  padding: 0 clamp(18px, 4.5vw, 72px);
+  margin: 0;
+  padding: 0;
+  max-width: none;
 }
 
-/* the wall */
+/* THE WALL */
 .wall{
-  font-size: 15.8px;             /* slightly smaller than default */
-  line-height: 1.34;             /* tighter = less “comfortable” */
-  letter-spacing: 0.002em;
-  word-spacing: 0.01em;
+  margin: 0;
+  padding: 0;
 
-  text-align: justify;           /* hard right edge */
+  font-size: 15.8px;
+  line-height: 1.32;         /* tighter, less “friendly” */
+  letter-spacing: 0.002em;
+
+  text-align: justify;       /* hard right edge */
   text-justify: inter-word;
 
   hyphens: auto;
@@ -44,28 +47,14 @@ main{
 
   white-space: normal;
   overflow-wrap: break-word;
-
-  margin: 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--rule);
 }
 
-/* keep it a single block even if paste introduced tags */
+/* If paste introduced tags, keep it one block */
 .wall p{ margin: 0; }
 .wall br{ display: none; }
 
-/* subtle selection (keeps mood) */
-::selection{
-  background: rgba(233,233,230,.16);
-}
-
-/* mobile: keep the mood, avoid ugly justification artifacts */
+/* Mobile: justified full-bleed looks awful on phones; keep it readable */
 @media (max-width: 680px){
-  main{
-    margin: 32px auto;
-    padding: 0 16px;
-  }
-
   .wall{
     font-size: 15.4px;
     line-height: 1.42;
